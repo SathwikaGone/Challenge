@@ -6,13 +6,11 @@ export default class Rewards extends Component {
     data: this.props.data,
     Total: 0,
     MonthRewards: [],
-    Months: ["January", "February", "March"],
     showVal: false,
     err: "",
   };
 
   handleChange = (e) => {
-    console.log("reset");
     this.setState({ name: e.target.value, Total: 0, err: "", showVal: false });
   };
   handleReset = (e) => {
@@ -37,7 +35,7 @@ export default class Rewards extends Component {
       }
       this.setState({ Total: total, MonthRewards: MonthTot, showVal: true });
     } else {
-      this.setState({ err: "Name not Found" });
+      this.setState({ err: "User not Found" });
     }
   };
 
@@ -54,11 +52,12 @@ export default class Rewards extends Component {
   };
 
   render() {
-    const { name, err, Total, MonthRewards, showVal, Months } = this.state;
+    const { name, err, Total, MonthRewards, showVal } = this.state;
+    const Months = ["January", "February", "March"];
     return (
       <div>
         <form>
-          <label>Name: </label>
+          <label>Enter UserName: </label>
           <input
             type="text"
             value={this.state.name}
